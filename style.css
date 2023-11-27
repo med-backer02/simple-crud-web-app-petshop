@@ -74,3 +74,20 @@ a.button, a:hover, a.selected {
     display: flex;
     margin-bottom: 50px;
 }
+
+img {
+    max-width: 100%;
+}
+
+form {
+    display: grid;
+    gap: 10px;
+}
+
+label {
+    text-align: left;
+}
+
+label input, label textarea, label select {
+    width: 100%;
+}

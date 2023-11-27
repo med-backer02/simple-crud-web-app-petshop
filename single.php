@@ -1,3 +1,20 @@
+<?php
+require("db.php");
+if(!isset($_GET['item_id'])){
+    echo "<script>
+            alert('вы не выбрали товар!');
+            location.href='index.php'
+            </script>";
+    exit();
+}
+$item_id=$_GET['item_id'];
+$item=$db->query("SELECT * FROM items WHERE id=$item_id")->fetchAll(2);
+
+if(count($item)>0){
+    $item=$item[0];
+}
+?>
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -14,9 +31,9 @@
     </header>
 <main>
     <section class="info">
-        <img src="" alt="item">
-        <h1>Pedigree adult meal</h1>
-        <p>PEDIGREE® Adult Complete Nutrition Roasted Chicken, Rice & Vegetable Flavor Dry Dog Food is formulated to give dogs all of the energy and nourishment they need to continue living life to the fullest.</p>
+        <img src="<?=$item['photo'];?>" alt="item">
+        <h1><?=$item['name'];?></h1>
+        <p><?=$item['description'];?></p>
     </section>
 
     <section class="buy">
@@ -25,7 +42,7 @@
             <span>1</span>
             <button>-</button>
         </div>
-        <h2>$19</h2>
+        <h2>$<?=$item['price'];?></h2>
     </section>
 </main>
 </body>
