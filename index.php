@@ -20,10 +20,11 @@ if (isset($_GET['category'])) {
 </head>
 <body>
 <header><h1>Little’ Petshop</h1></header>
-
+<a href="admin.php">Admin panel</a>
+<br>
 <main>
     <section class="filters">
-        <?php foreach ($categories as $category): ?>
+        <?php foreach ($categories as $category):?>
             <a href="?category=<?= $category['id']; ?>"
                 <?php if (isset($_GET['category']) && $_GET['category'] == $category['id']) echo 'class="selected"'; ?>
             ><?= $category['name']; ?></a>
